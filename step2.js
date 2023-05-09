@@ -11,7 +11,7 @@ const isUrl = require("is-url");
 async function cat(path) {
   try {
     let contents = await fsP.readFile(path, "utf8");
-    console.log(contents);
+    console.log(contents)
   } catch (err) {
     console.log(err.message);
     process.exit(1);
@@ -25,7 +25,7 @@ async function cat(path) {
 async function webCat(url) {
   try {
     let contents = await axios.get(url);
-    console.log(contents);
+    console.log(contents)
   } catch (err) {
     console.log(err.message);
     process.exit(1);
@@ -36,8 +36,8 @@ async function webCat(url) {
  * Check if str is local path or url and run appropriate cat function
  */
 
-function catOrWebCat(str) {
-  console.log(isUrl(str) ? webCat(str) : cat(str));
+async function catOrWebCat(str) {
+  isUrl(str) ? webCat(str) : cat(str)
 }
 
 catOrWebCat(process.argv[2]);
