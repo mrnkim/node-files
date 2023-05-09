@@ -45,12 +45,14 @@ async function catOrWebCat(str) {
  * OR reads from source and prints contents
  */
 async function readOrWrite(args){
-  console.log("path",args[2])
+
   if (args[2] === '--out'){
+    //console.log("writing to file:",args[3])
     const content = await catOrWebCat(args[4])
     writeToFile(args[3], content)
   }
   else{
+    //console.log("reading from:",args[2])
     console.log(catOrWebCat(args[2]))
   }
 }
